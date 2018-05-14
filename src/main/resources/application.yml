@@ -1,0 +1,36 @@
+server:
+  servlet:
+    context-path: /auth
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/XE
+    username: CLOUDCOMPILERR-DB
+    password: admin
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      connection-timeout: 60000
+      maximum-pool-size: 5
+      auto-commit: true
+      
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    properties:
+      hibernate:
+        show_sql: true
+        temp.use_jdbc_metadata_defaults: false
+        use_sql_comments: true
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+   
+  security:
+    user:
+      name: admin
+      password: password
+      roles:
+      - admin
+      - developer    
